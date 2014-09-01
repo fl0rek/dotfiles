@@ -11,5 +11,7 @@
 !.oh-my-zsh
 !.zshrc
 
-## .gitignore
+## git
 !.gitignore
+!.gitconfig
+!.gitmodules
