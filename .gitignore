@@ -11,6 +11,11 @@
 !.oh-my-zsh
 !.zshrc
 
+## ssh (careful there!)
+!.ssh/
+.ssh/*
+!.ssh/config
+
 ## git
 !.gitignore
 !.gitconfig
