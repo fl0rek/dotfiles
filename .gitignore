@@ -16,6 +16,9 @@
 .ssh/*
 !.ssh/config
 
+## mutt
+!.muttrc
+
 ## git
 !.gitignore
 !.gitconfig

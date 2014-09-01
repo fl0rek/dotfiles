@@ -1,0 +1,3 @@
+set mbox="~/Maildir/"
+set spoolfile="~/Maildir"
+
