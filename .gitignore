@@ -1,29 +1,32 @@
 ### ignore everything
 /*
 
+## .config dir mange
+!/.config/
+
 ### except
 
 ## vim
-!.vim/
-!.vimrc
+!/.vim/
+!/.vimrc
 
 ## zsh
-!.oh-my-zsh
-!.zshrc
+!/.oh-my-zsh
+!/.zshrc
 
 ## ssh (careful there!)
-!.ssh/
-.ssh/*
-!.ssh/config
+!/.ssh/
+/.ssh/*
+!/.ssh/config
 
 ## mutt
-!.muttrc
+!/.muttrc
 
-##
-!.i3/
-!.i3/*
+## i3
+!/.i3/
+!/.i3/*
 
 ## git
 !.gitignore
-!.gitconfig
-!.gitmodules
+!/.gitconfig
+!/.gitmodules
