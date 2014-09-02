@@ -30,6 +30,9 @@
 ## fonts
 !/.fonts/
 
+## tmux
+!/.tmux.conf
+
 ## git
 !.gitignore
 !/.gitconfig
