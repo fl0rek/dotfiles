@@ -3,6 +3,7 @@
 
 ## .config dir mange
 !/.config/
+!/.config/.gitignore
 
 ### except
 
@@ -25,6 +26,9 @@
 ## i3
 !/.i3/
 !/.i3/*
+
+## fonts
+!/.fonts/
 
 ## git
 !.gitignore

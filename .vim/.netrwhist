@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/florek/dev/catalyst/Pelper/lib/Pelper/Controller'
-let g:netrw_dirhist_2='/home/florek/.oh-my-zsh'
-let g:netrw_dirhist_3='/home/florek/.vim'
-let g:netrw_dirhist_4='/home/florek/.vim/bundle'
-let g:netrw_dirhist_5='/home/florek/.config/powerline/themes/tmux'
