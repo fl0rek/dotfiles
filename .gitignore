@@ -26,6 +26,9 @@
 !/.i3/
 !/.i3/*
 
+## fonts
+!/.fonts/
+
 ## git
 !.gitignore
 !/.gitconfig
