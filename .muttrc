@@ -1,3 +1,6 @@
 set mbox="~/Maildir/"
 set spoolfile="~/Maildir"
 
+auto_view text/html                                      # view html automatically
+alternative_order text/plain text/enriched text/html     # save html for last
+
