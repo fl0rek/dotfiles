@@ -19,7 +19,7 @@ set $mod Mod4
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
-font xft:Inconsolata 10
+font xft:Inconsolata 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -170,8 +170,6 @@ bar {
     tray_output       LVDS1
     
     #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-
-    
 }
 
 #bar {
