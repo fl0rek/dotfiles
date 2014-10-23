@@ -6,8 +6,6 @@ syntax on
 set encoding=utf-8
 set gcr=n:blinkon0
 
-set incsearch
-
 set foldmethod=syntax
 set foldlevelstart=1
 
