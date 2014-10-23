@@ -1,5 +1,5 @@
 set mbox="~/Maildir/"
-set spoolfile="~/Maildir"
+#set spoolfile="~/Maildir"
 set sort=threads
 
 color hdrdefault white black  # headers white on black
