@@ -1,12 +1,14 @@
 ### ignore everything
 /*
 
+### except
+
 ## .config dir mange
 !/.config/
 !/.config/.gitignore
 
-### except
-
+## shell
+!/.aliases
 ## vim
 !/.vim/
 !/.vimrc
