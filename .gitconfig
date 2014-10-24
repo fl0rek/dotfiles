@@ -8,5 +8,3 @@
 	lg = !"git lg1"
 	fuck = reset HEAD --hard
 
-[push]
-	default = simple
