@@ -25,7 +25,7 @@ font xft:Inconsolata 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -190,7 +190,8 @@ exec --no-startup-id synapse -s
 exec --no-startup-id syndaemon -i 1 -k
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xmodmap ~/.x-capsmagick
-exec --no-startup-id compton --config ~/.config/compton.conf
+exec --no-startup-id xcompmgr --config ~/.config/compton.conf
+
 client.focused #0088CC #0088CC #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
 client.unfocused #333333 #333333 #888888 #292d2e
