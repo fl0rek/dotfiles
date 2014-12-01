@@ -55,6 +55,9 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 
 
 
+LD_LIBRARY_PATH=/home/florek/install/rust/lib/ 
+export LD_LIBRARY_PATH
+
 
 PATH="/home/florek/perl5/bin${PATH+:}$PATH"; export PATH;
 PERL5LIB="/home/florek/perl5/lib/perl5${PERL5LIB+:}$PERL5LIB"; export PERL5LIB;
