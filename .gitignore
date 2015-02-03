@@ -7,6 +7,9 @@
 
 ### except
 
+# aliases
+!/.aliases
+
 ## vim
 !/.vim/
 !/.vimrc

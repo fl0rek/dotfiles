@@ -1,0 +1,1 @@
+alias fuck fuck='sudo $(fc -nl -1)'
