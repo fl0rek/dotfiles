@@ -9,6 +9,7 @@
 
 ## shell
 !/.aliases
+!/.profile
 ## vim
 !/.vim/
 !/.vimrc

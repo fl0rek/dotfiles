@@ -52,12 +52,7 @@ export PATH=/opt/bin:/usr/local/bin:/usr/bin:/bin:/opt/android-sdk-update-manage
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 
 . ~/.aliases
-
-
-
-LD_LIBRARY_PATH=/home/florek/install/rust/lib/ 
-export LD_LIBRARY_PATH
-
+. ~/.profile
 
 PATH="/home/florek/perl5/bin${PATH+:}$PATH"; export PATH;
 PERL5LIB="/home/florek/perl5/lib/perl5${PERL5LIB+:}$PERL5LIB"; export PERL5LIB;
