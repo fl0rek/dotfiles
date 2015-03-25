@@ -30,5 +30,4 @@ alias 'ps?'='ps aux | grep '
 alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
 alias whoami='echo root'
-#alias fuck='sudo fc -s'
-alias fuck='sudo $(history -p \!\!)'
+alias fuck fuck='sudo $(fc -nl -1)'

@@ -10,6 +10,8 @@
 ## shell
 !/.aliases
 !/.profile
+### except
+
 ## vim
 !/.vim/
 !/.vimrc
