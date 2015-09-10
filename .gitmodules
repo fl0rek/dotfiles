@@ -1,6 +1,6 @@
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
+	path = zsh/.oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".config/powerline"]
-	path = .config/powerline
+	path = powerline/.config/powerline
 	url = git://github.com/Lokaltog/powerline.git
