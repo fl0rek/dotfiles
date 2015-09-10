@@ -1,0 +1,33 @@
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+## GCC ############################################
+alias gcc='gcc -Wall -Wextra'
+
+## LS #############################################
+alias ls='ls --group-directories-first --color=auto'
+alias l="ls -l"
+alias ll="ls -la"
+alias la="ls -a"
+alias lsize="ls -lah  | sort -k5 -h"
+alias lah="ls -lah"
+
+## DU #############################################
+alias duh="du -h"
+alias dfh="df -h"
+
+## ADMIN ##########################################
+alias mountt="mount | column -t"
+
+## MISC ###########################################
+alias today="date +%y-%m-%d"
+alias nautilus="nautilus --no-desktop"
+alias gvir="gvim --remote-tab" 
+alias 'ps?'='ps aux | grep '
+#alias ssh="~/.ssh/ssh-ident"
+
+alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
+
+alias whoami='echo root'
+alias fuck fuck='sudo $(fc -nl -1)'
