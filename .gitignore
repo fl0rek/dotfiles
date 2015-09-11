@@ -1,2 +1,2 @@
 # lets not put our private keys on github shall we 
-/ssh/.ssh/secret/*
+/ssh/.ssh/private/*
