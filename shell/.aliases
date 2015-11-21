@@ -30,4 +30,8 @@ alias 'ps?'='ps aux | grep '
 alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
 alias whoami='echo root'
-alias fuck fuck='sudo $(fc -nl -1)'
+alias fuck='sudo $(fc -nl -1)'
+
+haste() { a=$(cat); curl -X POST -s -d "$a" http://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; }
+
+

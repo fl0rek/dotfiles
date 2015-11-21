@@ -3,6 +3,8 @@ set nocompatible               " be iMproved
 filetype plugin indent on     " required!
 syntax on
 
+set nu 
+
 set encoding=utf-8
 set gcr=n:blinkon0
 
