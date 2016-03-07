@@ -10,3 +10,7 @@ export EDITOR=vim
 export TZ=Europe/Warsaw
 
 export LD_LIBRARY_PATH=/home/florek/install/rust/lib/ 
+
+export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="1366x768"
+
+

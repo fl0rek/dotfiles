@@ -25,7 +25,7 @@ font xft:Inconsolata 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -36,8 +36,9 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id synapse
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "85" -bw 0
 
-bindsym $mod+d exec --no-startup-id synapse
 
 # multimedia keys 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2%+ unmute && killall -SIGUSR1 i3status
@@ -155,7 +156,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+z exec ~/bin/autolock
+bindsym $mod+z exec xscreensaver-command --lock
+bindsym XF86TaskPane	exec thinkpad-rotate
 #exec xautolock -time 15 -locker ~/bin/autolock
 
 focus_follows_mouse no
@@ -185,12 +187,15 @@ bar {
     #urgent_workspace #2f343a #900000 #ffffff
   #}
 #}
-exec --no-startup-id nm-applet
-exec --no-startup-id synapse -s
-exec --no-startup-id syndaemon -i 1 -k
-exec --no-startup-id nitrogen --restore
+#exec --no-startup-id synapse -s
+#exec --no-startup-id syndaemon -i 1 -k
+##exec --no-startup-id nitrogen --restore
+
+exec --no-startup-id feh --bg-scale .bg/x220.png
 exec --no-startup-id xmodmap ~/.x-capsmagick
-exec --no-startup-id xcompmgr --config ~/.config/compton.conf
+exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec xscreensaver -no-splash 
+
 
 client.focused #0088CC #0088CC #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
