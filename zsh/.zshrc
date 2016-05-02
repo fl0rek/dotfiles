@@ -30,13 +30,17 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 . ~/.aliases
 . ~/.profile
 
+PATH=$PATH:/sbin
+
 PATH=$PATH:/usr/games/bin
 
 PATH=$PATH:/opt/android-sdk-update-manager/tools
 PATH=$PATH:/opt/android-sdk-update-manager/platform-tools
 PATH=$PATH:/opt/sbin
 
+PATH=$PATH:$HOME/.bin
 PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/games/.bin
 
 export PATH;
