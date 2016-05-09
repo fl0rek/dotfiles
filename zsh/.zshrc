@@ -31,6 +31,7 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 . ~/.profile
 
 PATH=$PATH:/sbin
+PATH=$PATH:/usr/sbin
 
 PATH=$PATH:/usr/games/bin
 

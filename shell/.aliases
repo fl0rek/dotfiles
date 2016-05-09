@@ -4,6 +4,7 @@
 
 ## GCC ############################################
 alias gcc='gcc -std=c11 -Wall -Wextra -Wpedantic'
+alias cc='cc -std=c11 -Wall -Wextra -Wpedantic -I$HOME/dev/fstdlib/'
 
 ## LS #############################################
 alias ls='ls --group-directories-first --color=auto'
