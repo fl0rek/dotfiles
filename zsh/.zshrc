@@ -23,7 +23,7 @@ unsetopt sharehistory
 
 # Customize to your needs...
 
-keychain --confhost -q
+which keychain >/dev/null && keychain --confhost -q
 
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 
