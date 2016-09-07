@@ -64,6 +64,8 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
+let &colorcolumn=join(range(81,999),",")
+
 set laststatus=2
 set t_Co=256
 colorscheme 256-grayvim

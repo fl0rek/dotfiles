@@ -3,7 +3,8 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ## GCC ############################################
-alias gcc='gcc -Wall -Wextra'
+alias gcc='gcc -std=c11 -Wall -Wextra -Wpedantic'
+alias cc='cc -std=c11 -Wall -Wextra -Wpedantic -Wno-trigraphs -I$HOME/dev/fstdlib/'
 
 ## LS #############################################
 alias ls='ls --group-directories-first --color=auto'
@@ -32,6 +33,7 @@ alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 alias whoami='echo root'
 alias fuck='sudo $(fc -nl -1)'
 
-haste() { a=$(cat); curl -X POST -s -d "$a" http://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; }
+haste() { a=$(cat); curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; }
 
+alias :wq="sudo systemctl suspend"
 
