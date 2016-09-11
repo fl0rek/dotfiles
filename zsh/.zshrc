@@ -45,5 +45,6 @@ PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/games/.bin
 
 PATH=$PATH:/sbin
+PATH=$PATH:/usr/sbin
 
 export PATH;
