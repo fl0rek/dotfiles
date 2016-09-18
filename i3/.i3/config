@@ -4,7 +4,8 @@
 # Should you change your keyboard layout somewhen, delete
 # this file and re-run i3-config-wizard(1).
 #
-
+#	¯\_(ツ)_/¯
+#
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -17,14 +18,6 @@ exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id xscreensaver -no-splash 
 exec --no-startup-id redshift-gtk
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
 font xft:Inconsolata 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -43,11 +36,15 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "85" -bw 0
 bindsym $mod+c exec --no-startup-id google-chrome-beta --show-app-list
+
+bindsym $mod+z exec xscreensaver-command --lock
+bindsym XF86TaskPane	exec thinkpad-rotate
+#exec xautolock -time 15 -locker ~/bin/autolock
+
 for_window [instance="chrome_app_list" window_role="bubble"] floating enable
-
-
 for_window [class="shutter" instance="Shutter"] floating enable # huh -- not working
-## screenshot via shutter
+
+## screenshots using shutter
 # default full screen capture
 bindsym Print exec shutter --full
 # active window capture
@@ -142,49 +139,42 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 new_window normal 0 px
 new_float normal 0 px
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+z exec xscreensaver-command --lock
-bindsym XF86TaskPane	exec thinkpad-rotate
-#exec xautolock -time 15 -locker ~/bin/autolock
 
 focus_follows_mouse no
 
 bar {
-    status_command    i3status
-    position          bottom
-    mode              dock
-    workspace_buttons yes
-    tray_output       primary
+    status_command	i3status
+    position		bottom
+    mode		dock
+    workspace_buttons	yes
+    tray_output		primary
+    font		xft:Inconsolata Medium 10 
     
     colors {
-	    background #002b36
-	    statusline #839496
-	    separator  #586e75
-	    focused_workspace  #b58900 #b58900 #002b36
-	    active_workspace   #586e75 #586e75 #002b36
-	    inactive_workspace #073642 #002b36 #839496
-	    urgent_workspace   #dc322f #dc322f #fdf6e3
+	    background		#002b36
+	    statusline		#839496
+	    separator		#586e75
+	    focused_workspace	#b58900 #b58900 #002b36
+	    active_workspace	#586e75 #586e75 #002b36
+	    inactive_workspace	#073642 #002b36 #839496
+	    urgent_workspace	#dc322f #dc322f #fdf6e3
     }
-
 }
 
-client.focused          #002b36 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #002b36 #073642 #839496 #073642
-client.unfocused        #002b36 #073642 #839496 #073642
-client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+client.focused		#002b36 #586e75 #fdf6e3 #268bd2
+client.focused_inactive	#002b36 #073642 #839496 #073642
+client.unfocused	#002b36 #073642 #839496 #073642
+client.urgent		#002b36 #dc322f #fdf6e3 #002b36
 
