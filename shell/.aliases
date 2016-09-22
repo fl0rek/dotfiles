@@ -80,3 +80,19 @@ function sayy() {
 	echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; 
 }
 
+# launches chat for $1 in a nice clutterless google chrome window
+function twitch_chat() {
+	google-chrome-beta --app=https://www.twitch.tv/$1/chat
+}
+
+function twitch() {
+	if !  [[ -e .private/twitch-oauth-token ]] ; then
+		echo "No twitch ouath token found" >&2
+		error 1
+	fi
+	#OAUTH_TOKEN=`cat .private/twitch-oauth-token`
+	. ~/.private/twitch-oauth-token
+
+	twitch_chat $1 &
+	livestreamer --twitch-oauth-token $OAUTH_TOKEN http://www.twitch.tv/$1 best --player-passthrough hls -v -p mpv
+}
