@@ -1,6 +1,5 @@
 m4_divert(-1)
 m4_changequote(`‹', `›')
-m4_changecom(‹#meta›)
 m4_divert(0)
 # i3status configuration file.
 # see "man i3status" for documentation.
@@ -31,6 +30,18 @@ order += "cpu_temperature CPU"
 order += "cpu_temperature 0"
 order += "cpu_temperature 1"
 order += "load"
+order += "tztime local"
+›,
+HOSTNAME, ‹felwood›, ‹
+order += "tztime hostname"
+order += "disk /"
+order += "ethernet enp0s25"
+order += "wireless wlp3s0"
+order += "volume master"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
+order += "load"
+order += "battery 0"
 order += "tztime local"
 ›)
 
@@ -79,17 +90,28 @@ disk "/" {
         format = "⛁ %free"
 }
 
+m4_ifelse(HOSTNAME, ‹tanaris›,‹
 cpu_temperature 0 {
         format = "T₀: %degrees °C"
         path = "/sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp"
 }
-
 cpu_temperature 1 {
         format = "T₁: %degrees °C"
         path = "/sys/bus/acpi/devices/LNXTHERM:01/thermal_zone/temp"
 }
-
 cpu_temperature CPU {
         format = "Tᶜᵖᵘ: %degrees °C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
 }
+›, m4_dnl =====================================================================
+HOSTNAME, ‹felwood›, ‹
+cpu_temperature 0 {
+        format = "T₀: %degrees °C"
+	path = "/sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp"
+}
+cpu_temperature CPU {
+        format = "Tᶜᵖᵘ: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+}
+›)
+
