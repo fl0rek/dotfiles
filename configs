@@ -8,3 +8,6 @@ ssh
 tmux
 vim
 zsh
+compton
+00-dirs
+01-dirs

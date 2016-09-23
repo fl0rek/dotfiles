@@ -19,29 +19,14 @@ function sayy() { echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; }
 plugins=(git zsh-syntax-highlighting rsync perl ssh-agent gas gitignore gnu-utils systemd virtualenv)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.alias-tips/alias-tips.plugin.zsh
+
 unsetopt sharehistory
 
-# Customize to your needs...
-
-keychain --confhost -q
+which keychain >/dev/null && keychain --confhost -q
 
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 
-. ~/.aliases
-. ~/.profile
+[[ -e ~/.aliases ]] && . ~/.aliases
+[[ -e ~/.profile ]] && . ~/.profile
 
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/sbin
-
-PATH=$PATH:/usr/games/bin
-
-PATH=$PATH:/opt/android-sdk-update-manager/tools
-PATH=$PATH:/opt/android-sdk-update-manager/platform-tools
-PATH=$PATH:/opt/sbin
-
-PATH=$PATH:$HOME/.bin
-PATH=$PATH:$HOME/.local/bin
-PATH=$PATH:$HOME/.cargo/bin
-PATH=$PATH:$HOME/games/.bin
-
-export PATH;
