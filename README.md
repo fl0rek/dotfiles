@@ -20,4 +20,4 @@ WARNING! stowing package-foo would cause conflicts:
   * existing target is neither a link nor a directory: bar
 All operations aborted.
 ```
-indicates that package `package-foo` contains file `bar` that conflicts with already existing file `bar`. You need to either remove/move existing file in filesystem or skip installing this package.
+indicates that package `package-foo` contains file `bar` that conflicts with already existing file `bar`. You need to either remove/move existing file in filesystem or skip installation of this package.

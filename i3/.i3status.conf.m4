@@ -23,6 +23,7 @@ general {
 }
 
 m4_ifelse(HOSTNAME, ‹tanaris›,‹
+order += "tztime hostname"
 order += "disk /"
 order += "ethernet enp0s31f6"
 order += "volume master"
@@ -64,6 +65,10 @@ run_watch VPN {
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+tztime hostname {
+	format = "florek@HOSTNAME"
 }
 
 load {
