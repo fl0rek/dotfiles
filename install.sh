@@ -20,7 +20,6 @@ for INPUT in $M4_FILES ; do
 	echo $INPUT '=>' $OUTPUT
 	$M4 -P -D HOSTNAME=$HOSTNAME $INPUT > $OUTPUT
 done
-exit
 
 PACKAGES=`cat configs`
 for p in $PACKAGES ; do
