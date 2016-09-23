@@ -23,5 +23,5 @@ done
 
 PACKAGES=`cat configs`
 for p in $PACKAGES ; do
-	$STOW $p
+	$STOW $p --ignore=.keep
 done
