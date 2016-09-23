@@ -3,7 +3,22 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ## GCC ############################################
-alias gcc='gcc -Wall -Wextra'
+CFLAGS='-Wall -Wextra -Wpedantic'
+CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-unused'
+
+CTRIGRAPHS="-trigraphs -Wno-trigraphs"
+CINCLUDEDIR="-I$HOME/dev/fstdlib/"
+
+CCFLAGS="-std=c11 $CALLFLAGS $CTRIGRAPHS $CINCLUDEDIR"
+
+CXXALLFLAGS="$CALLFLAGS -Wctor-dtor-privacy -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Wstrict-null-sentinel"
+CXXFLAGS="-std=c++1y $CXXALLFLAGS  $CTRIGRAPHS $CINCLUDEDIR"
+
+alias gcc="gcc $CCFLAGS"
+alias cc="cc $CCFLAGS"
+
+alias g++="g++ $CXXFLAGS"
+alias c++="c++ $CXXFLAGS"
 
 ## LS #############################################
 alias ls='ls --group-directories-first --color=auto'
@@ -19,19 +34,64 @@ alias dfh="df -h"
 
 ## ADMIN ##########################################
 alias mountt="mount | column -t"
+alias :wq="sudo systemctl suspend"
 
 ## MISC ###########################################
 alias today="date +%y-%m-%d"
-alias nautilus="nautilus --no-desktop"
 alias gvir="gvim --remote-tab" 
 alias 'ps?'='ps aux | grep '
 #alias ssh="~/.ssh/ssh-ident"
+alias whoami='echo root'
 
 alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
-alias whoami='echo root'
 alias fuck='sudo $(fc -nl -1)'
 
-haste() { a=$(cat); curl -X POST -s -d "$a" http://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; }
+unalias _ # like I'm going to use it
 
 
+## MISC FUNCTIONS #################################
+# uploads shit from stdin to private haste server
+haste() { 
+	a=$(cat) 
+	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; 
+}
+
+
+# convert movie to some sane format ( x265 + vorbis in matroska container)
+convert_to_x265() {
+	ffmpeg -i "$1" -c:v libx265 -preset slower -crf 28 -c:a libvorbis -strict -2 -b:a 128k "$2"
+}
+
+# outputs $1 full start and 5-$1 empty stars (used for nice looking rating)
+rate() { 
+	for i in {1..5}; do 
+		if [[ $i -le $1 ]] then 
+			echo -ne "\xe2\x98\x85" 
+		else 
+			echo -ne "\xe2\x98\x86"
+		fi
+	done 
+}
+
+# says $@ in presumably grimm and scary voice
+function sayy() { 
+	echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; 
+}
+
+# launches chat for $1 in a nice clutterless google chrome window
+function twitch_chat() {
+	google-chrome-beta --app=https://www.twitch.tv/$1/chat
+}
+
+function twitch() {
+	if !  [[ -e .private/twitch-oauth-token ]] ; then
+		echo "No twitch ouath token found" >&2
+		error 1
+	fi
+	#OAUTH_TOKEN=`cat .private/twitch-oauth-token`
+	. ~/.private/twitch-oauth-token
+
+	twitch_chat $1 &
+	livestreamer --twitch-oauth-token $OAUTH_TOKEN http://www.twitch.tv/$1 best --player-passthrough hls -v -p mpv
+}

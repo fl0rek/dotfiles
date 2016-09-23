@@ -1,2 +1,7 @@
-# lets not put our private keys on github shall we 
+# lets not put our private keys on github, shall we 
 /ssh/.ssh/private/*
+/ssh/.ssh/public/*
+/ssh/.ssh/known_hosts
+/ssh/.ssh/environment-*
+
+*.swp
