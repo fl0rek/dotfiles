@@ -26,6 +26,7 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/games/.bin
 PATH=$PATH:$HOME/Games/.bin
+PATH=$PATH:$HOME/.local/powerline/scripts
 
 PATH=$PATH:/sbin
 PATH=$PATH:/usr/sbin
