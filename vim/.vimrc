@@ -60,9 +60,11 @@ execute pathogen#infect()
 
 autocmd Filetype haskell setlocal ts=2 sts=2 sw=2
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"set rtp+=~/.local/powerline/powerline
+
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 " let &colorcolumn=join(range(81,999),",")
 

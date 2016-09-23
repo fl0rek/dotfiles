@@ -1,4 +1,6 @@
+# for powerline 
 POWERLINE_CONFIG_COMMAND=powerline-config
+export PYTHONPATH=$HOME/.local/powerline 
 
 export PATH=$PATH:$GOBIN
 
