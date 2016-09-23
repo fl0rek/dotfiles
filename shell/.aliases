@@ -38,7 +38,6 @@ alias :wq="sudo systemctl suspend"
 
 ## MISC ###########################################
 alias today="date +%y-%m-%d"
-#alias nautilus="nautilus --no-desktop"
 alias gvir="gvim --remote-tab" 
 alias 'ps?'='ps aux | grep '
 #alias ssh="~/.ssh/ssh-ident"

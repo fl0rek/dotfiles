@@ -2,7 +2,7 @@
 	path = zsh/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "powerline/.config/powerline"]
-	path = powerline/.config/powerline
+	path = powerline/.local/powerline
 	url = https://github.com/powerline/powerline.git
 [submodule "zsh/.alias-tips"]
 	path = zsh/.alias-tips

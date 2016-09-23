@@ -1,3 +1,7 @@
+m4_divert(-1)
+m4_changequote(`‹', `›')
+m4_changecom(‹#meta›)
+m4_divert(0)
 # i3status configuration file.
 # see "man i3status" for documentation.
 
@@ -18,19 +22,16 @@ general {
         interval = 5
 }
 
-#order += "ipv6"
+m4_ifelse(HOSTNAME, ‹tanaris›,‹
 order += "disk /"
-#order += "run_watch DHCP"
-#order += "run_watch VPN"
-#order += "wireless wlp3s0"
 order += "ethernet enp0s31f6"
 order += "volume master"
-#order += "battery 0"
 order += "cpu_temperature CPU"
 order += "cpu_temperature 0"
 order += "cpu_temperature 1"
 order += "load"
 order += "tztime local"
+›)
 
 volume master {
         format = "♪: %volume"
