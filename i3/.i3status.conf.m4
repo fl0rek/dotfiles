@@ -25,6 +25,7 @@ m4_ifelse(HOSTNAME, ‹tanaris›,‹
 order += "tztime hostname"
 order += "disk /"
 order += "ethernet enp0s31f6"
+order += "ethernet xenbr0"
 order += "volume master"
 order += "cpu_temperature CPU"
 order += "cpu_temperature 0"
@@ -62,6 +63,16 @@ ethernet enp0s25 {
         format_down = "E: down"
 }
 
+ethernet enp0s31f6 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+ethernet xenbr0 {
+        format_up = "E: %ip"
+        format_down = "E: down"
+}
 battery 0 {
         format = "%status %percentage %remaining"
 }
