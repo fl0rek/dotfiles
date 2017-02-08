@@ -9,11 +9,7 @@ m4_divert(0)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 m4_dnl # on tanaris super key (meta4) is waay over there
-m4_ifelse(HOSTNAME, ‹tanaris›, ‹
 set $mod Mod1
-›, ‹
-set $mod Mod4
-›)
 
 exec --no-startup-id feh --bg-scale .bg/x220.png
 m4_dnl # on tanaris caps-esc remap is done in keyboard controller

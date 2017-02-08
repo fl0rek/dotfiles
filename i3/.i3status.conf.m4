@@ -44,6 +44,15 @@ order += "cpu_temperature 0"
 order += "load"
 order += "battery 0"
 order += "tztime local"
+›,
+‹
+order += "tztime hostname"
+order += "disk /"
+order += "disk /home"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
+order += "load"
+order += "tztime local"
 ›)
 
 volume master {
@@ -98,7 +107,11 @@ load {
 }
 
 disk "/" {
-        format = "⛁ %free"
+        format = "⛁H %free"
+}
+
+disk "/home" {
+        format = "⛁/ %free"
 }
 
 m4_ifelse(HOSTNAME, ‹tanaris›,‹

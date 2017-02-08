@@ -47,6 +47,8 @@ alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
 alias fuck='sudo $(fc -nl -1)'
 
+alias tailf='tail -F'
+
 unalias _ # like I'm going to use it
 
 
@@ -95,3 +97,7 @@ function twitch() {
 	twitch_chat $1 &
 	livestreamer --twitch-oauth-token $OAUTH_TOKEN http://www.twitch.tv/$1 best --player-passthrough hls -v -p mpv
 }
+
+for i in ~/.aliases.d/* ; do 
+    . $i
+done

@@ -5,11 +5,16 @@ syntax on
 
 set nu 
 
+set incsearch
+set hlsearch
+
 set encoding=utf-8
 set gcr=n:blinkon0
 
 set foldmethod=syntax
 set foldlevelstart=1
+
+set relativenumber
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -24,6 +29,7 @@ let xml_syntax_folding=1      " XML
 set fillchars="fold: "
 hi Folded ctermbg=Black ctermfg=darkyellow
 
+filetype plugin on
 
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -34,12 +40,22 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-nmap <F8> :TagbarToggle<CR>
+nmap	<C-]>	:NERDTreeToggle<CR>
 
-filetype plugin on
+"nmap <F8> :TagbarToggle<CR>
+
 
 set omnifunc=syntaxcomplete#Complete
-set grepprg=grep\ -nH\ $*
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+:nnoremap <F5> :buffers<CR>:buffer<Space>
 
 let g:tex_flavor='latex'
 let g:uncrustify_cfg_file_path = "~/.uncrustify.cfg"  " path to uncrustify configuration file
@@ -51,7 +67,12 @@ let g:syntastic_warning_symbol = '!'
 
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-:noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+
+nnoremap gp :bp<CR>
+nnoremap gn :bn<CR>
+nnoremap gl :ls<CR>
+nnoremap gb :ls<CR>:b
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
@@ -70,4 +91,5 @@ python3 del powerline_setup
 
 set laststatus=2
 set t_Co=256
+set cryptmethod=blowfish2
 colorscheme 256-grayvim
