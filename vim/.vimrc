@@ -4,6 +4,11 @@ set nocompatible
 " PLUGINS
 call plug#begin('~/.vim/plugged')
 
+" Sensible default configuration
+Plug 'tpope/vim-sensible'
+" Autodetect indentation
+Plug 'tpope/vim-sleuth'
+
 "Plug 'altercation/vim-colors-solarized'
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -36,21 +41,13 @@ set t_Co=256
 
 colorscheme 256-grayvim
 
-if (exists('+colorcolumn'))
-	set colorcolumn=80
-	highlight ColorColumn ctermbg=9
-endif
+highlight ColorColumn ctermbg=magenta "set to whatever you like
+call matchadd('ColorColumn', '\%81v', 100) "set column nr
 
-let g:unite_source_history_yank_enable = 1
-try
-	let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-	call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <space><space> :split<cr>:<C-u>Unite -start-insert file_rec/async<cr>
-" reset not it is <C-l> normally
-nnoremap <space>r <Plug>(unite_restart)
+"if (exists('+colorcolumn'))
+	"set colorcolumn=80
+	"highlight ColorColumn ctermbg=9
+"endif
 
 nnoremap <space>/ :Ag 
 
@@ -59,7 +56,7 @@ filetype plugin indent on
 filetype plugin on
 syntax on
 
-" show current number and relative offset for rest 
+" show current number and relative offset for rest
 set number
 set relativenumber
 
@@ -106,16 +103,19 @@ if executable('ag')
 	" Use Ag over Grep
 	set grepprg=ag\ --nogroup\ --nocolor
 
-	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+	" Use ag in CtrlP for listing files. Lightning fast
+	" and respects .gitignore
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 "search from project root or else from current directory
 let g:ctrlp_working_path_mode = 'ra'
 
+let mapleader = "\<Space>"
 
-"print buffers on f5 and prompt for buffer to switch to
-nnoremap <F5> :buffers<CR>:buffer<Space>
+"print buffers and prompt for buffer to switch to
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
 
 "use latex for tex files 
 let g:tex_flavor='latex'
@@ -128,7 +128,7 @@ let g:syntastic_warning_symbol = '!'
 "use js syntax for json
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-"vertical split current file 
+"vertical split current file
 noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR> 
 
 nnoremap gp :bp<CR>
