@@ -3,6 +3,11 @@ set nocompatible
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+" plugin for commenting and uncommenting code
+Plug 'scrooloose/nerdcommenter'
+
+" Pretty print of undo tree
+Plug 'mbbill/undotree'
 
 " Sensible default configuration
 Plug 'tpope/vim-sensible'
@@ -44,13 +49,6 @@ colorscheme 256-grayvim
 highlight ColorColumn ctermbg=magenta "set to whatever you like
 call matchadd('ColorColumn', '\%81v', 100) "set column nr
 
-"if (exists('+colorcolumn'))
-	"set colorcolumn=80
-	"highlight ColorColumn ctermbg=9
-"endif
-
-nnoremap <space>/ :Ag 
-
 " filetype and syntax highlighting
 filetype plugin indent on
 filetype plugin on
@@ -64,12 +62,16 @@ set relativenumber
 set incsearch
 set hlsearch
 
+" search case insensitive if no matches
+set smartcase
+
 " set encoding
 set encoding=utf-8
 
 " ???
 set gcr=n:blinkon0
 
+set mouse=a
 
 " Folding specific configuration
 set foldmethod=syntax
@@ -87,6 +89,30 @@ let xml_syntax_folding=1	" XML
 set fillchars="fold: "
 hi Folded ctermbg=Black ctermfg=darkyellow
 
+" CtrlP configuration
+if executable('ag')
+	" Use Ag over Grep
+	set grepprg=ag\ --nogroup\ --nocolor
+
+	" Use ag in CtrlP for listing files. Lightning fast
+	" and respects .gitignore
+	let g:ctrlp_user_command = 'ag %s -l --skip-vcs-ignores --nocolor -g ""'
+endif
+
+"search from project root or else from current directory
+let g:ctrlp_working_path_mode = 'ra'
+
+let mapleader = "\<Space>"
+
+"print buffers and prompt for buffer to switch to
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+
+" Search in project
+nnoremap <Leader>/ :Ag<Space>
+nnoremap <Leader>* :Ag <c-r>=expand("<cword>")<cr><cr>
+
+" Toggle undotree view
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Disable arrow keys
 inoremap  <Up>     <NOP>
@@ -98,26 +124,8 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" CtrlP configuration
-if executable('ag')
-	" Use Ag over Grep
-	set grepprg=ag\ --nogroup\ --nocolor
 
-	" Use ag in CtrlP for listing files. Lightning fast
-	" and respects .gitignore
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
-"search from project root or else from current directory
-let g:ctrlp_working_path_mode = 'ra'
-
-let mapleader = "\<Space>"
-
-"print buffers and prompt for buffer to switch to
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
-
-
-"use latex for tex files 
+"use latex for tex files
 let g:tex_flavor='latex'
 
 
@@ -128,8 +136,11 @@ let g:syntastic_warning_symbol = '!'
 "use js syntax for json
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
-"vertical split current file
+" vertical split current file
 noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR> 
+
+" search for current visual selection
+vnoremap // y/<C-R>"<CR>
 
 nnoremap gp :bp<CR>
 nnoremap gn :bn<CR>
