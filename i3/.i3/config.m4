@@ -11,7 +11,7 @@ m4_divert(0)
 m4_dnl # on tanaris super key (meta4) is waay over there
 set $mod Mod1
 
-exec --no-startup-id feh --bg-scale .bg/x220.png
+exec --no-startup-id xsetroot -solid "#002b36"
 m4_dnl # on tanaris caps-esc remap is done in keyboard controller
 m4_ifelse(HOSTNAME, ‹tanaris›, ‹›, ‹
 exec --no-startup-id xmodmap ~/.x-capsmagick
