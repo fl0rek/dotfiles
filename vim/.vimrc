@@ -3,6 +3,9 @@ set nocompatible
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+" change splash screen 
+Plug 'mhinz/vim-startify'
+
 " plugin for commenting and uncommenting code
 Plug 'scrooloose/nerdcommenter'
 
@@ -88,6 +91,10 @@ let xml_syntax_folding=1	" XML
 
 set fillchars="fold: "
 hi Folded ctermbg=Black ctermfg=darkyellow
+
+" Startify config
+let g:startify_custom_header = []
+let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' } ]
 
 " CtrlP configuration
 if executable('ag')
