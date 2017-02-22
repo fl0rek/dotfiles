@@ -11,7 +11,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-[[ -f "~/.Xresources" ]] && xrdb -I$HOME -merge "~/.Xresources"
+[[ -f ~/.Xresources ]] && xrdb -I$HOME -merge ~/.Xresources
 
 exec dbus-launch --exit-with-session i3
 
