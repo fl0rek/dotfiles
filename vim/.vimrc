@@ -3,6 +3,9 @@ set nocompatible
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+" window zoom in/out
+Plug 'ZoomWin'
+
 " change splash screen 
 Plug 'mhinz/vim-startify'
 
@@ -106,10 +109,19 @@ if executable('ag')
 	let g:ctrlp_user_command = 'ag %s -l --skip-vcs-ignores --nocolor -g ""'
 endif
 
+" enable persistent undo file
+if has("persistent_undo")
+	set undodir=~/.undodir_vim/
+	set undofile
+endif
+
 "search from project root or else from current directory
 let g:ctrlp_working_path_mode = 'ra'
 
 let mapleader = "\<Space>"
+
+" sudo write
+cmap w!! %!sudo tee > /dev/null %
 
 "print buffers and prompt for buffer to switch to
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
