@@ -17,7 +17,7 @@ m4_ifelse(HOSTNAME, ‹tanaris›, ‹›, ‹
 exec --no-startup-id xmodmap ~/.x-capsmagick
 ›)
 exec --no-startup-id compton -b --config ~/.config/compton.conf
-exec --no-startup-id xscreensaver -no-splash 
+exec --no-startup-id xscreensaver -no-splash
 exec --no-startup-id redshift-gtk
 
 font xft:Inconsolata 8
@@ -54,14 +54,14 @@ bindsym Shift+Print exec shutter --active
 bindsym Mod1+Print exec shutter --select
 
 
-# multimedia keys 
+# multimedia keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2%+ unmute && killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2%- unmute && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle && killall -SIGUSR1 i3status
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness 
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 
 # change focus
@@ -134,8 +134,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-new_window normal 0 px
-new_float normal 0 px
+new_window pixel 1
+new_float pixel 1
+
+hide_edge_borders both
 
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -158,8 +160,8 @@ bar {
     mode		dock
     workspace_buttons	yes
     tray_output		primary
-    font		xft:Inconsolata Medium 10 
-    
+    font		xft:Inconsolata Medium 10
+
     # nice solarized dark theme colours
     colors {
 	    background		#002b36

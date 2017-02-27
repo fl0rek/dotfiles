@@ -13,5 +13,5 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -I$HOME -merge ~/.Xresources
 
-exec dbus-launch --exit-with-session i3
+exec dbus-launch --exit-with-session i3 --shmlog-size=26214400
 
