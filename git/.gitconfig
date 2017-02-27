@@ -13,3 +13,5 @@
 	default = simple
 [core]
 	excludesfile = /home/vfisdk/.gitexclude_global
+[pull]
+	rebase = true
