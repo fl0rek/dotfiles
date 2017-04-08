@@ -66,6 +66,7 @@ call matchadd('ColorColumn', '\%81v', 100) "set column nr
 " filetype and syntax highlighting
 filetype plugin indent on
 filetype plugin on
+
 syntax on
 
 " show current number and relative offset for rest
