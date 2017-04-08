@@ -13,5 +13,9 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -I$HOME -merge ~/.Xresources
 
-exec dbus-launch --exit-with-session i3 --shmlog-size=26214400
+if which dbus-launch > /dev/null ; then 
+	exec dbus-launch --exit-with-session i3 --shmlog-size=26214400
+else
+	exec i3 --shmlug-size=26214400
+fi
 
