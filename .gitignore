@@ -5,3 +5,6 @@
 /ssh/.ssh/environment-*
 
 *.swp
+
+# vim specific directories, since plugins are managed by plug.vim
+/vim/.vim/plugged/

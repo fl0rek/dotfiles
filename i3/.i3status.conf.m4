@@ -45,6 +45,18 @@ order += "cpu_temperature 0"
 order += "load"
 order += "battery 0"
 order += "tztime local"
+›,
+‹
+order += "tztime hostname"
+order += "ethernet eth0"
+order += "ethernet eth1"
+order += "ethernet eth2"
+order += "disk /"
+order += "disk /home"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
+order += "load"
+order += "tztime local"
 ›)
 
 volume master {
@@ -74,6 +86,18 @@ ethernet xenbr0 {
         format_up = "E: %ip"
         format_down = "E: down"
 }
+ethernet eth0 {
+        format_up = "E0: %ip"
+        format_down = "E0: down"
+}
+ethernet eth1 {
+        format_up = "E1: %ip"
+        format_down = "E1: down"
+}
+ethernet eth2 {
+        format_up = "E2: %ip"
+        format_down = "E2: down"
+}
 battery 0 {
         format = "%status %percentage %remaining"
 }
@@ -99,7 +123,11 @@ load {
 }
 
 disk "/" {
-        format = "⛁ %free"
+        format = "⛁H %free"
+}
+
+disk "/home" {
+        format = "⛁/ %free"
 }
 
 disk "/mnt/auxiliary/" {

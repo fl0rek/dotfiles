@@ -13,7 +13,7 @@ export LD_LIBRARY_PATH=/home/florek/install/rust/lib/
 
 [[ $COLORTERM = gnome-terminal && ! $TERM = screen-256color ]] && TERM=xterm-256color
 
-if [ -e /home/florek/.nix-profile/etc/profile.d/nix.sh ]; then . /home/florek/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+#:if [ -e /home/florek/.nix-profile/etc/profile.d/nix.sh ]; then . /home/florek/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 PATH=$PATH:/sbin
 PATH=$PATH:/usr/sbin

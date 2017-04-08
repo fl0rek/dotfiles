@@ -49,6 +49,10 @@ alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
 alias fuck='sudo $(fc -nl -1)'
 
+alias tailf='tail -F'
+
+alias zz='exec zsh'
+
 unalias _ # like I'm going to use it
 
 
@@ -94,3 +98,7 @@ function twitch() {
 	twitch_chat $1 &
 	twitch_video $1
 }
+
+for i in ~/.aliases.d/* ; do 
+    . $i
+done
