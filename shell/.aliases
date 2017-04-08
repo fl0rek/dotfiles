@@ -4,7 +4,7 @@
 
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
-CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-unused'
+CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-error=unused-parameter -Wno-error=unknown-warning-option'
 
 CTRIGRAPHS="-trigraphs -Wno-trigraphs"
 CINCLUDEDIR="-I$HOME/dev/fstdlib/"
@@ -43,6 +43,8 @@ alias 'ps?'='ps aux | grep '
 #alias ssh="~/.ssh/ssh-ident"
 alias whoami='echo root'
 
+alias t='task'
+
 alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 
 alias fuck='sudo $(fc -nl -1)'
@@ -60,7 +62,7 @@ haste() {
 
 # convert movie to some sane format ( x265 + vorbis in matroska container)
 convert_to_x265() {
-	ffmpeg -i "$1" -c:v libx265 -preset slower -crf 28 -c:a libvorbis -strict -2 -b:a 128k "$2"
+	ffmpeg -i "$1" -c:v libx265 -preset slow -crf 21 -c:a libvorbis -strict -2 -b:a 128k "$2"
 }
 
 # outputs $1 full start and 5-$1 empty stars (used for nice looking rating)
@@ -81,17 +83,14 @@ function sayy() {
 
 # launches chat for $1 in a nice clutterless google chrome window
 function twitch_chat() {
-	google-chrome-beta --app=https://www.twitch.tv/$1/chat
+	google-chrome-beta --user-data-dir=.config/google-chrome-twitch --app="https://www.twitch.tv/$1/chat"
+}
+
+function twitch_video() {
+	google-chrome-beta --user-data-dir=.config/google-chrome-twitch --app="https://player.twitch.tv/?channel=$1"
 }
 
 function twitch() {
-	if !  [[ -e .private/twitch-oauth-token ]] ; then
-		echo "No twitch ouath token found" >&2
-		error 1
-	fi
-	#OAUTH_TOKEN=`cat .private/twitch-oauth-token`
-	. ~/.private/twitch-oauth-token
-
 	twitch_chat $1 &
-	livestreamer --twitch-oauth-token $OAUTH_TOKEN http://www.twitch.tv/$1 best --player-passthrough hls -v -p mpv
+	twitch_video $1
 }

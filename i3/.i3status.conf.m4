@@ -24,6 +24,7 @@ general {
 m4_ifelse(HOSTNAME, ‹tanaris›,‹
 order += "tztime hostname"
 order += "disk /"
+order += "disk /mnt/auxiliary/"
 order += "ethernet enp0s31f6"
 order += "ethernet xenbr0"
 order += "volume master"
@@ -99,6 +100,10 @@ load {
 
 disk "/" {
         format = "⛁ %free"
+}
+
+disk "/mnt/auxiliary/" {
+        format = "⛁2 %free"
 }
 
 m4_ifelse(HOSTNAME, ‹tanaris›,‹

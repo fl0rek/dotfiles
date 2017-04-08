@@ -1,6 +1,9 @@
 set nocompatible               " be iMproved
 
 filetype plugin indent on     " required!
+
+au BufRead,BufNewFile *.nw    set filetype=noweb
+
 syntax on
 
 set nu 
