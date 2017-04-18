@@ -7,3 +7,6 @@
 [submodule "zsh/.alias-tips"]
 	path = zsh/.alias-tips
 	url = https://github.com/djui/alias-tips
+[submodule "vim/.vim/bundle/table-mode"]
+	path = vim/.vim/bundle/table-mode
+	url = git@github.com:dhruvasagar/vim-table-mode.git
