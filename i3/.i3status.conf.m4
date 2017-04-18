@@ -1,6 +1,5 @@
 m4_divert(-1)
 m4_changequote(`‹', `›')
-m4_changecom(‹#meta›)
 m4_divert(0)
 # i3status configuration file.
 # see "man i3status" for documentation.
@@ -23,12 +22,39 @@ general {
 }
 
 m4_ifelse(HOSTNAME, ‹tanaris›,‹
+order += "tztime hostname"
 order += "disk /"
+order += "disk /mnt/auxiliary/"
 order += "ethernet enp0s31f6"
+order += "ethernet xenbr0"
 order += "volume master"
 order += "cpu_temperature CPU"
 order += "cpu_temperature 0"
 order += "cpu_temperature 1"
+order += "load"
+order += "tztime local"
+›,
+HOSTNAME, ‹felwood›, ‹
+order += "tztime hostname"
+order += "disk /"
+order += "ethernet enp0s25"
+order += "wireless wlp3s0"
+order += "volume master"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
+order += "load"
+order += "battery 0"
+order += "tztime local"
+›,
+‹
+order += "tztime hostname"
+order += "ethernet eth0"
+order += "ethernet eth1"
+order += "ethernet eth2"
+order += "disk /"
+order += "disk /home"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
 order += "load"
 order += "tztime local"
 ›)
@@ -50,6 +76,28 @@ ethernet enp0s25 {
         format_down = "E: down"
 }
 
+ethernet enp0s31f6 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+ethernet xenbr0 {
+        format_up = "E: %ip"
+        format_down = "E: down"
+}
+ethernet eth0 {
+        format_up = "E0: %ip"
+        format_down = "E0: down"
+}
+ethernet eth1 {
+        format_up = "E1: %ip"
+        format_down = "E1: down"
+}
+ethernet eth2 {
+        format_up = "E2: %ip"
+        format_down = "E2: down"
+}
 battery 0 {
         format = "%status %percentage %remaining"
 }
@@ -66,25 +114,48 @@ tztime local {
         format = "%Y-%m-%d %H:%M:%S"
 }
 
+tztime hostname {
+	format = "florek@HOSTNAME"
+}
+
 load {
         format = "%1min %5min %15min"
 }
 
 disk "/" {
-        format = "⛁ %free"
+        format = "⛁H %free"
 }
 
+disk "/home" {
+        format = "⛁/ %free"
+}
+
+disk "/mnt/auxiliary/" {
+        format = "⛁2 %free"
+}
+
+m4_ifelse(HOSTNAME, ‹tanaris›,‹
 cpu_temperature 0 {
         format = "T₀: %degrees °C"
         path = "/sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp"
 }
-
 cpu_temperature 1 {
         format = "T₁: %degrees °C"
         path = "/sys/bus/acpi/devices/LNXTHERM:01/thermal_zone/temp"
 }
-
 cpu_temperature CPU {
         format = "Tᶜᵖᵘ: %degrees °C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input"
 }
+›, m4_dnl =====================================================================
+HOSTNAME, ‹felwood›, ‹
+cpu_temperature 0 {
+        format = "T₀: %degrees °C"
+	path = "/sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp"
+}
+cpu_temperature CPU {
+        format = "Tᶜᵖᵘ: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
+}
+›)
+

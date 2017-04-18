@@ -1,3 +1,6 @@
+00-dirs
+01-dirs
+compton
 git
 i3
 monoid-font
@@ -6,8 +9,6 @@ powerline
 shell
 ssh
 tmux
+urxvt
 vim
 zsh
-compton
-00-dirs
-01-dirs
