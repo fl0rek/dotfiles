@@ -1,0 +1,17 @@
+# convert movie to some sane format ( x265 + vorbis in matroska container)
+convert_to_x265() {
+	ffmpeg -i "$1" -c:v libx265 -preset slow -crf 21 -c:a libvorbis -strict -2 -b:a 128k "$2"
+}
+
+# outputs $1 full start and 5-$1 empty stars (used for nice looking rating)
+rate() {
+	for i in {1..5}; do
+		if [[ $i -le $1 ]] then
+			echo -ne "\xe2\x98\x85"
+		else
+			echo -ne "\xe2\x98\x86"
+		fi
+	done
+}
+
+# vim: set syntax:shell

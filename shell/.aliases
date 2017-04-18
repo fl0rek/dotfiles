@@ -1,7 +1,3 @@
-#Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
 CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-error=unused-parameter -Wno-error=unknown-warning-option'
@@ -21,109 +17,44 @@ alias g++="g++ $CXXFLAGS"
 alias c++="c++ $CXXFLAGS"
 
 ## LS #############################################
-alias ls='ls --group-directories-first --color=auto'
 alias l="ls -l"
-alias ll="ls -la"
 alias la="ls -a"
-alias lsize="ls -lah  | sort -k5 -h"
 alias lah="ls -lah"
+alias ll="ls -la"
+alias ls='ls --group-directories-first --color=auto'
+alias lsize="ls -lah  | sort -k5 -h"
 
 ## DU #############################################
 alias duh="du -h"
 alias dfh="df -h"
 
 ## ADMIN ##########################################
-alias mountt="mount | column -t"
 alias :wq="echo \"you're on wrong host you dimwit\""
+alias fuck='sudo $(fc -nl -1)'
+alias mountt="mount | column -t"
 
 ## MISC ###########################################
-alias today="date +%y-%m-%d"
-alias gvir="gvim --remote-tab" 
 alias 'ps?'='ps aux | grep '
-#alias ssh="~/.ssh/ssh-ident"
-alias whoami='echo root'
-
 alias t='task'
-
-alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
-
-alias fuck='sudo $(fc -nl -1)'
-
 alias tailf='tail -F'
-
+alias today="date +%y-%m-%d"
+alias whoami='echo root'
 alias zz='exec zsh'
 
-unalias _ # like I'm going to use it
-
-
 ## MISC FUNCTIONS #################################
-# uploads shit from stdin to private haste server
-haste() { 
-	a=$(cat) 
-	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; 
+# uploads input to private haste server
+haste() {
+	a=$(cat)
+	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}';
 }
 
-
-# convert movie to some sane format ( x265 + vorbis in matroska container)
-convert_to_x265() {
-	ffmpeg -i "$1" -c:v libx265 -preset slow -crf 21 -c:a libvorbis -strict -2 -b:a 128k "$2"
-}
-
-# outputs $1 full start and 5-$1 empty stars (used for nice looking rating)
-rate() { 
-	for i in {1..5}; do 
-		if [[ $i -le $1 ]] then 
-			echo -ne "\xe2\x98\x85" 
-		else 
-			echo -ne "\xe2\x98\x86"
-		fi
-	done 
-}
-
-# says $@ in presumably grimm and scary voice
-function sayy() { 
-	echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; 
-}
-
-# launches chat for $1 in a nice clutterless google chrome window
-function twitch_chat() {
-	google-chrome-beta --user-data-dir=.config/google-chrome-twitch --app="https://www.twitch.tv/$1/chat"
-}
-
-function twitch_video() {
-	google-chrome-beta --user-data-dir=.config/google-chrome-twitch --app="https://player.twitch.tv/?channel=$1"
-}
-
-function twitch() {
-	twitch_chat $1 &
-	twitch_video $1
-}
-
-streaming() {
-     INRES="320x288" # input resolution
-     OUTRES="320x288" # output resolution
-     FPS="30" # target FPS
-     GOP="60" # i-frame interval, should be double of FPS, 
-     GOPMIN="30" # min i-frame interval, should be equal to fps, 
-     THREADS="2" # max 6
-     CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
-     QUALITY="ultrafast"  # one of the many FFMPEG preset
-     AUDIO_RATE="44100"
-     STREAM_KEY="$1" # use the terminal command Streaming streamkeyhere to stream your video to twitch or justin
-     SERVER="live-fra" # twitch server in frankfurt, see http://bashtech.net/twitch/ingest.php for list
-     
-     ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :10 -f alsa -i default -f flv -ac 2 -ar $AUDIO_RATE \
-       -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
-       -s $OUTRES -preset $QUALITY -tune film -acodec libmp3lame -threads $THREADS -strict normal \
-       -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
-
-#     ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :10  -f flv -ac 2 -ar $AUDIO_RATE \
-#       -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
-#       -s $OUTRES -preset $QUALITY -tune film -acodec libmp3lame -threads $THREADS -strict normal \
-#       -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
-}
-
-[[ -d ~/.aliases.d/ ]] && for i in ~/.aliases.d/* ; do 
+## LOAD ALIAS MODULES #############################
+[[ -d ~/.aliases.d/ ]] && for i in ~/.aliases.d/* ; do
 
     . $i
 done
+
+## UNALIAS ########################################
+unalias _ # like I'm going to use it
+
+# vim: set syntax:shell
