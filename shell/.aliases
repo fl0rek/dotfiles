@@ -38,7 +38,7 @@ alias :wq="sudo systemctl suspend"
 
 ## MISC ###########################################
 alias today="date +%y-%m-%d"
-alias gvir="gvim --remote-tab" 
+alias gvir="gvim --remote-tab"
 alias 'ps?'='ps aux | grep '
 #alias ssh="~/.ssh/ssh-ident"
 alias whoami='echo root'
@@ -51,14 +51,16 @@ alias tailf='tail -F'
 
 alias zz='exec zsh'
 
+alias fag='ag -g'
+
 unalias _ # like I'm going to use it
 
 
 ## MISC FUNCTIONS #################################
 # uploads shit from stdin to private haste server
-haste() { 
-	a=$(cat) 
-	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}'; 
+haste() {
+	a=$(cat)
+	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}';
 }
 
 
@@ -68,19 +70,19 @@ convert_to_x265() {
 }
 
 # outputs $1 full start and 5-$1 empty stars (used for nice looking rating)
-rate() { 
-	for i in {1..5}; do 
-		if [[ $i -le $1 ]] then 
-			echo -ne "\xe2\x98\x85" 
-		else 
+rate() {
+	for i in {1..5}; do
+		if [[ $i -le $1 ]] then
+			echo -ne "\xe2\x98\x85"
+		else
 			echo -ne "\xe2\x98\x86"
 		fi
-	done 
+	done
 }
 
 # says $@ in presumably grimm and scary voice
-function sayy() { 
-	echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; 
+function sayy() {
+	echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null;
 }
 
 # launches chat for $1 in a nice clutterless google chrome window
@@ -100,6 +102,19 @@ function twitch() {
 	livestreamer --twitch-oauth-token $OAUTH_TOKEN http://www.twitch.tv/$1 best --player-passthrough hls -v -p mpv
 }
 
-for i in ~/.aliases.d/* ; do 
+function waitfor() {
+    while [[ ! -f $1 ]] ; do
+	inotifywait -qqt 1 -e create -e moved_to "$(dirname $1)"
+	echo -n .
+    done
+
+}
+
+function vag() {
+    vim -c "Ag $@"
+}
+
+
+for i in ~/.aliases.d/* ; do
     . $i
 done

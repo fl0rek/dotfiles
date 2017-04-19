@@ -47,3 +47,12 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 [[ -e ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
+
+_ag() {
+  if (( CURRENT == 2 )); then
+    compadd $(cut -f 1 tags tmp/tags 2>/dev/null | grep -v '!_TAG')
+  fi
+}
+
+compdef _ag ag
+
