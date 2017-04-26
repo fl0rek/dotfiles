@@ -1,6 +1,5 @@
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# vim: set syntax:sh
 
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
