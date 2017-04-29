@@ -1,12 +1,15 @@
 " disable vi compatibility mode
-set nocompatible 
+set nocompatible
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+" Buffer explorer
+Plug 'fholgado/minibufexpl.vim'
+
 " window zoom in/out
 Plug 'ZoomWin'
 
-" change splash screen 
+" change splash screen
 Plug 'mhinz/vim-startify'
 
 " plugin for commenting and uncommenting code
@@ -22,6 +25,8 @@ Plug 'tpope/vim-sleuth'
 
 "Plug 'altercation/vim-colors-solarized'
 Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'lifepillar/vim-solarized8'
 
 "Unite
 " depends on vimproc
@@ -42,15 +47,18 @@ Plug 'airblade/vim-gitgutter'
 "Search in files with ag
 Plug 'rking/ag.vim'
 
+"cscope support
+Plug 'vim-scripts/cscope.vim'
+
 call plug#end()
 
 " CONFIG
 
-" Set colours to solarized or fallback to installed theme
+" Set colours to grayvim or fallback to installed theme
 set background=dark
 set t_Co=256
 
-colorscheme 256-grayvim
+colorscheme solarized8_dark
 
 highlight ColorColumn ctermbg=magenta "set to whatever you like
 call matchadd('ColorColumn', '\%81v', 100) "set column nr
@@ -70,10 +78,14 @@ set incsearch
 set hlsearch
 
 " search case insensitive if no matches
+set ignorecase
 set smartcase
 
 " set encoding
 set encoding=utf-8
+
+" < and > to round stops values
+set shiftround
 
 " ???
 set gcr=n:blinkon0
@@ -82,7 +94,7 @@ set mouse=a
 
 " Folding specific configuration
 set foldmethod=syntax
-"set foldlevelstart=1
+set foldlevelstart=9999
 
 let javaScript_fold=1		" JavaScript
 let perl_fold=1			" Perl
@@ -124,12 +136,58 @@ let mapleader = "\<Space>"
 " sudo write
 cmap w!! %!sudo tee > /dev/null %
 
+nnoremap <Leader><Space> <c-w><c-p>
+
 "print buffers and prompt for buffer to switch to
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
 " Search in project
 nnoremap <Leader>/ :Ag<Space>
 nnoremap <Leader>* :Ag <c-r>=expand("<cword>")<cr><cr>
+
+function! FBufferNext(cnt)
+	if a:cnt > 0
+		execute "bn " . a:cnt
+	else
+		execute "bn"
+	end
+endfunction
+
+function! FBufferPrevious(cnt)
+	if a:cnt > 0
+		execute "bp " . a:cnt
+	else
+		execute "bp"
+	end
+endfunction
+
+nnoremap <Leader>n :<C-U>call FBufferNext(v:count)<CR>
+nnoremap <Leader>p :<C-U>call FBufferPrevious(v:count)<CR>
+
+nnoremap <C-k> :<C-U>call FBufferNext(v:count)<CR>
+nnoremap <C-j> :<C-U>call FBufferPrevious(v:count)<CR>
+
+set hidden
+set wildmenu
+set wildmode=list:longest,full
+
+let g:miniBufExplMapWindowNavVim = 1
+
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplForceSyntaxEnable = 1
+
+hi MBENormal ctermfg=253 ctermbg=None
+hi MBEChanged ctermfg=Red ctermbg=None
+hi MBEVisibleNormal ctermfg=253 ctermbg=160
+hi MBEVisibleChanged ctermfg=Red ctermbg=160
+
+
+set sessionoptions=blank,buffers,curdir,help,tabpages,winsize
+
+";nnoremap <C-L> :<C-U>call FBufferNext(v:count)<CR>
+";nnoremap <C-H> :<C-U>call FBufferPrevious(v:count)<CR>
+
+nnoremap <leader>so :so<Space>~/.vimrc<CR>
 
 " Toggle undotree view
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -157,7 +215,7 @@ let g:syntastic_warning_symbol = '!'
 autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " vertical split current file
-noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR> 
+noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 
 " search for current visual selection
 vnoremap // y/<C-R>"<CR>

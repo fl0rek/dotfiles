@@ -17,6 +17,7 @@ URxvt.boldFont:         xft:inconsolata-g:pixelsize=15:antialias=true:hinting=tr
 URxvt.italicFont:       xft:inconsolata-g:pixelsize=15:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=15:antialias=true,hinting=true
 URxvt.bolditalicFont:   xft:inconsolata-g:pixelsize=15:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=15:antialias=true,hinting=true
 
+URxvt.intensityStyles:	false
 URxvt.internalBorder:   1
 URxvt.underlineColor:	#999999
 URxvt.cursorBlink:      true

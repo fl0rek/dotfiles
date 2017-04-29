@@ -48,5 +48,13 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
 
+_ag() {
+  if (( CURRENT == 2 )); then
+    compadd $(cut -f 1 tags tmp/tags 2>/dev/null | grep -v '!_TAG')
+  fi
+}
+
+compdef _ag ag
+
 # added by travis gem
 [ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
