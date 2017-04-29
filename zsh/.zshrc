@@ -47,3 +47,6 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 [[ -e ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
+
+# added by travis gem
+[ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
