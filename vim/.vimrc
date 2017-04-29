@@ -48,7 +48,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rking/ag.vim'
 
 "cscope support
-Plug 'vim-scripts/cscope.vim'
+if executable('cscope')
+	Plug 'vim-scripts/cscope.vim'
+endif
 
 call plug#end()
 
@@ -110,7 +112,7 @@ hi Folded ctermbg=Black ctermfg=darkyellow
 
 " Startify config
 let g:startify_custom_header = []
-let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' } ]
+let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' }, { 'ca' : '~/.aliases' } ]
 
 " CtrlP configuration
 if executable('ag')

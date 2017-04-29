@@ -1,6 +1,6 @@
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
-CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-error=unused-parameter -Wno-error=unknown-warning-option'
+CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-error=unused-parameter'
 
 CTRIGRAPHS="-trigraphs -Wno-trigraphs"
 CINCLUDEDIR="-I$HOME/dev/fstdlib/"
