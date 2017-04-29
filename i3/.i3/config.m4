@@ -47,11 +47,11 @@ for_window [class="shutter" instance="Shutter"] floating enable # huh -- not wor
 
 ## screenshots using shutter
 # default full screen capture
-bindsym Print exec shutter --full
+bindsym Print exec shutter --select
 # active window capture
 bindsym Shift+Print exec shutter --active
 # selection capture
-bindsym Mod1+Print exec shutter --select
+bindsym Mod1+Print exec shutter --full
 
 
 # multimedia keys

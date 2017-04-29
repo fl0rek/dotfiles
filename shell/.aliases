@@ -29,7 +29,7 @@ alias duh="du -h"
 alias dfh="df -h"
 
 ## ADMIN ##########################################
-alias :wq="echo \"you're on wrong host you dimwit\""
+alias :wq="sudo systemctl suspend"
 alias fuck='sudo $(fc -nl -1)'
 alias mountt="mount | column -t"
 

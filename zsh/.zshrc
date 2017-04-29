@@ -56,3 +56,5 @@ _ag() {
 
 compdef _ag ag
 
+# added by travis gem
+[ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
