@@ -43,14 +43,12 @@ alias 'ps?'='ps aux | grep '
 alias whoami='echo root'
 
 alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
-
 alias fuck='sudo $(fc -nl -1)'
-
 alias tailf='tail -F'
-
 alias zz='exec zsh'
-
 alias fag='ag -g'
+alias trnl='tr "\n" " "'
+alias gitroot='cd $(git root)'
 
 unalias _ # like I'm going to use it
 
