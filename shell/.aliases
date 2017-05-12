@@ -49,6 +49,7 @@ alias zz='exec zsh'
 alias fag='ag -g'
 alias trnl='tr "\n" " "'
 alias gitroot='cd $(git root)'
+alias gbn='git branch-name'
 
 unalias _ # like I'm going to use it
 
