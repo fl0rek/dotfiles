@@ -50,6 +50,9 @@ Plug 'rking/ag.vim'
 "cscope support
 Plug 'vim-scripts/cscope.vim'
 
+"Word motion for camelcase et al
+Plug 'chaoren/vim-wordmotion'
+
 call plug#end()
 
 " CONFIG
