@@ -52,6 +52,9 @@ if executable('cscope')
 	Plug 'vim-scripts/cscope.vim'
 endif
 
+"Word motion for camelcase et al
+Plug 'chaoren/vim-wordmotion'
+
 call plug#end()
 
 " CONFIG
@@ -221,6 +224,14 @@ noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljz
 
 " search for current visual selection
 vnoremap // y/<C-R>"<CR>
+" insert current vim configs as modeline
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 nnoremap gp :bp<CR>
 nnoremap gn :bn<CR>
@@ -230,13 +241,10 @@ nnoremap gb :ls<CR>:b
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
-
 "haskell specific indentation configuration
 autocmd Filetype haskell setlocal ts=2 sts=2 sw=2
 
-
 "setup powerline
-"set rtp+=~/.local/powerline/powerline
 if has('python3')
 	python3 from powerline.vim import setup as powerline_setup
 	python3 powerline_setup()
@@ -246,3 +254,5 @@ endif
 set laststatus=2
 "make vim file encryption more secure (probably won't use it anyway, but hey)
 set cryptmethod=blowfish2
+
+" vim: set ts=8 sw=2 tw=78 noet :

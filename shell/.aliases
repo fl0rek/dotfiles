@@ -1,3 +1,6 @@
+# Example aliases
+# vim: set syntax:sh
+
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
 CALLFLAGS='-pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wredundant-decls -Wsign-conversion -Wstrict-overflow=5 -Wswitch-default -Wundef -Werror -Wno-error=unused-parameter'
@@ -30,16 +33,24 @@ alias dfh="df -h"
 
 ## ADMIN ##########################################
 alias :wq="sudo systemctl suspend"
-alias fuck='sudo $(fc -nl -1)'
 alias mountt="mount | column -t"
 
 ## MISC ###########################################
 alias 'ps?'='ps aux | grep '
+alias fag='ag -g'
+alias fuck='sudo $(fc -nl -1)'
+alias gbn='git branch-name'
+alias gitroot='cd $(git root)'
+alias pshell='perl -MPerl::Shell -e "Perl::Shell::shell();"'
 alias t='task'
 alias tailf='tail -F'
 alias today="date +%y-%m-%d"
+alias trnl='tr "\n" " "'
 alias whoami='echo root'
 alias zz='exec zsh'
+
+unalias _ # like I'm going to use it
+
 
 ## MISC FUNCTIONS #################################
 # uploads input to private haste server
