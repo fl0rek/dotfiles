@@ -65,7 +65,4 @@ haste() {
     . $i
 done
 
-## UNALIAS ########################################
-unalias _ # like I'm going to use it
-
 # vim: set syntax:shell
