@@ -28,12 +28,6 @@ Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'lifepillar/vim-solarized8'
 
-"Unite
-" depends on vimproc
-" you have to go to .vim/plugin/vimproc.vim and do `make`
-"Plug 'Shougo/unite.vim'
-"Plug 'Shougo/vimproc.vim'
-
 " current word highlighting
 Plug 'ihacklog/HiCursorWords'
 
@@ -47,6 +41,9 @@ Plug 'airblade/vim-gitgutter'
 "Search in files with ag
 Plug 'rking/ag.vim'
 
+"Show marked lines
+Plug 'kshenoy/vim-signature'
+
 "cscope support
 if executable('cscope')
 	Plug 'vim-scripts/cscope.vim'
@@ -55,9 +52,17 @@ endif
 "Word motion for camelcase et al
 Plug 'chaoren/vim-wordmotion'
 
+"Sublime like minimap
+Plug 'severin-lemaignan/vim-minimap'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do' : './install --all' }
+
 call plug#end()
 
 " CONFIG
+
+let g:minimap_toggle='<leader>mm'
 
 " Set colours to grayvim or fallback to installed theme
 set background=dark
@@ -254,5 +259,9 @@ endif
 set laststatus=2
 "make vim file encryption more secure (probably won't use it anyway, but hey)
 set cryptmethod=blowfish2
+
+ab iff if and only if
+ab if( if (
+ab while( while (
 
 " vim: set ts=8 sw=2 tw=78 noet :

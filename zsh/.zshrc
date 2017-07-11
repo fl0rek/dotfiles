@@ -58,3 +58,5 @@ compdef _ag ag
 
 # added by travis gem
 [ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
