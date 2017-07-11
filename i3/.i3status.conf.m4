@@ -46,6 +46,19 @@ order += "load"
 order += "battery 0"
 order += "tztime local"
 ›,
+HOSTNAME, ‹vfisdk›, ‹
+order += "tztime hostname"
+order += "ethernet eth0"
+order += "ethernet eth1"
+order += "ethernet eth2"
+order += "disk /"
+order += "disk /home"
+order += "disk /mnt/aux0"
+order += "cpu_temperature CPU"
+order += "cpu_temperature 0"
+order += "load"
+order += "tztime local"
+›,
 ‹
 order += "tztime hostname"
 order += "ethernet eth0"
@@ -128,6 +141,10 @@ disk "/" {
 
 disk "/home" {
         format = "⛁/ %free"
+}
+
+disk "/mnt/aux0" {
+        format = "⛁A %free"
 }
 
 disk "/mnt/auxiliary/" {
