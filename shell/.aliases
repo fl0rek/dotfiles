@@ -1,5 +1,4 @@
 # Example aliases
-# vim: set syntax:sh
 
 ## GCC ############################################
 CFLAGS='-Wall -Wextra -Wpedantic'
@@ -49,7 +48,7 @@ alias trnl='tr "\n" " "'
 alias whoami='echo root'
 alias zz='exec zsh'
 
-unalias _ # like I'm going to use it
+alias _ > /dev/null && unalias _ # like I'm going to use it
 
 
 ## MISC FUNCTIONS #################################
@@ -65,4 +64,4 @@ haste() {
     . $i
 done
 
-# vim: set syntax:shell
+# vim: syntax=sh
