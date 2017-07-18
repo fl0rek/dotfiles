@@ -31,9 +31,6 @@ Plug 'lifepillar/vim-solarized8'
 " current word highlighting
 Plug 'ihacklog/HiCursorWords'
 
-"Ctrl-P
-Plug 'ctrlpvim/ctrlp.vim'
-
 "Git related plugins
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -57,10 +54,19 @@ Plug 'severin-lemaignan/vim-minimap'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do' : './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 " CONFIG
+
+" fzf default keybindings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+nnoremap <silent> <C-P> :Files<CR>
+
 
 let g:minimap_toggle='<leader>mm'
 
@@ -122,24 +128,12 @@ hi Folded ctermbg=Black ctermfg=darkyellow
 let g:startify_custom_header = []
 let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' }, { 'ca' : '~/.aliases' } ]
 
-" CtrlP configuration
-if executable('ag')
-	" Use Ag over Grep
-	set grepprg=ag\ --nogroup\ --nocolor
-
-	" Use ag in CtrlP for listing files. Lightning fast
-	" and respects .gitignore
-	let g:ctrlp_user_command = 'ag %s -l --skip-vcs-ignores --nocolor -g ""'
-endif
 
 " enable persistent undo file
 if has("persistent_undo")
 	set undodir=~/.undodir_vim/
 	set undofile
 endif
-
-"search from project root or else from current directory
-let g:ctrlp_working_path_mode = 'ra'
 
 let mapleader = "\<Space>"
 
