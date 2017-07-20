@@ -44,17 +44,16 @@ zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.aux'
 [[ -e ~/.aliases ]] && . ~/.aliases
 [[ -e ~/.profile ]] && . ~/.profile
 
-[[ -e ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_SYNTAX_HIGHLIGHTING="$HOME/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -e "$ZSH_SYNTAX_HIGHLIGHTING" ]] && . "$ZSH_SYNTAX_HIGHLIGHTING"
+unset ZSH_SYNTAX_HIGHLIGHTING
+
 bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
 
-_ag() {
-  if (( CURRENT == 2 )); then
-    compadd $(cut -f 1 tags tmp/tags 2>/dev/null | grep -v '!_TAG')
-  fi
-}
-
-compdef _ag ag
+ZSH_COMPLETIONS="$HOME/.zsh-plugins/zsh-completions"
+[[ -e "$ZSH_COMPLETIONS" ]] && fpath=("$ZSH_COMPLETIONS" $fpath)
+unset ZSH_COMPLETIONS
 
 # added by travis gem
 [ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
