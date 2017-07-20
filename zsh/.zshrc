@@ -10,13 +10,7 @@ ZSH_THEME="af-magic"
 
 autoload -U zmv
 
-function rate() { for i in {1..5}; do if [[ $i -le $1 ]] then echo -ne "\xe2\x98\x85" ; else echo -ne "\xe2\x98\x86" ; fi ; done }
-function sayy() { echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; }
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rsync perl ssh-agent gas gitignore gnu-utils systemd virtualenv cp mosh nmap rsync sudo ssh-agent)
+plugins=( colored-man-pages cp gas git gitignore gnu-utils man mosh nmap perl python rsync rsync ssh-agent ssh-agent sudo systemd tmux virtualenv )
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.alias-tips/alias-tips.plugin.zsh

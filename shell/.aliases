@@ -58,6 +58,24 @@ haste() {
 	curl -X POST -s -d "$a" https://haste.florkiewicz.me/documents | awk -F '"' '{print "http://haste.florkiewicz.me/"$4}';
 }
 
+# echo rating out of 5 in nicely looking way
+# example:
+# 	$ rate 3
+# 	★★★☆☆
+function rate() {
+for i in {1..5}; do
+    if [[ $i -le $1 ]] then
+	echo -ne "\xe2\x98\x85"
+    else
+	echo -ne "\xe2\x98\x86"
+    fi
+done
+}
+
+function sayy() { echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; }
+
+
+
 ## LOAD ALIAS MODULES #############################
 [[ -d ~/.aliases.d/ ]] && for i in ~/.aliases.d/* ; do
 
