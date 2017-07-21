@@ -10,6 +10,7 @@ m4_divert(0)
 
 m4_dnl # on tanaris super key (meta4) is waay over there
 set $mod Mod1
+set $alt_mod Mod4
 
 exec --no-startup-id xsetroot -solid "#002b36"
 m4_dnl # on tanaris caps-esc remap is done in keyboard controller
@@ -114,6 +115,17 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $alt_mod+1 workspace 11
+bindsym $alt_mod+2 workspace 12
+bindsym $alt_mod+3 workspace 13
+bindsym $alt_mod+4 workspace 14
+bindsym $alt_mod+5 workspace 15
+bindsym $alt_mod+6 workspace 16
+bindsym $alt_mod+7 workspace 17
+bindsym $alt_mod+8 workspace 18
+bindsym $alt_mod+9 workspace 19
+bindsym $alt_mod+0 workspace 20
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -126,6 +138,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $alt_mod+Shift+1 move container to workspace 11
+bindsym $alt_mod+Shift+2 move container to workspace 12
+bindsym $alt_mod+Shift+3 move container to workspace 13
+bindsym $alt_mod+Shift+4 move container to workspace 14
+bindsym $alt_mod+Shift+5 move container to workspace 15
+bindsym $alt_mod+Shift+6 move container to workspace 16
+bindsym $alt_mod+Shift+7 move container to workspace 17
+bindsym $alt_mod+Shift+8 move container to workspace 18
+bindsym $alt_mod+Shift+9 move container to workspace 19
+bindsym $alt_mod+Shift+0 move container to workspace 20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
