@@ -3,8 +3,6 @@ set nocompatible
 
 " PLUGINS
 call plug#begin('~/.vim/plugged')
-" Buffer explorer
-Plug 'fholgado/minibufexpl.vim'
 
 " window zoom in/out
 Plug 'ZoomWin'
@@ -55,6 +53,10 @@ Plug 'severin-lemaignan/vim-minimap'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do' : './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -175,16 +177,8 @@ set hidden
 set wildmenu
 set wildmode=list:longest,full
 
-let g:miniBufExplMapWindowNavVim = 1
-
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplForceSyntaxEnable = 1
-
-hi MBENormal ctermfg=253 ctermbg=None
-hi MBEChanged ctermfg=Red ctermbg=None
-hi MBEVisibleNormal ctermfg=253 ctermbg=160
-hi MBEVisibleChanged ctermfg=Red ctermbg=160
-
+" airline config
+let g:airline#extensions#tabline#enabled = 1
 
 set sessionoptions=blank,buffers,curdir,help,tabpages,winsize
 
@@ -206,10 +200,8 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-
 "use latex for tex files
 let g:tex_flavor='latex'
-
 
 " Better :sign interface symbols
 let g:syntastic_error_symbol = '✗'
@@ -223,6 +215,7 @@ noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljz
 
 " search for current visual selection
 vnoremap // y/<C-R>"<CR>
+
 " insert current vim configs as modeline
 function! AppendModeline()
   let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
@@ -243,17 +236,11 @@ let g:ycm_server_log_level = 'debug'
 "haskell specific indentation configuration
 autocmd Filetype haskell setlocal ts=2 sts=2 sw=2
 
-"setup powerline
-if has('python3')
-	python3 from powerline.vim import setup as powerline_setup
-	python3 powerline_setup()
-	python3 del powerline_setup
-endif
-
 set laststatus=2
 "make vim file encryption more secure (probably won't use it anyway, but hey)
 set cryptmethod=blowfish2
 
+" bunch of dumb replacements to save keystrokes
 ab iff if and only if
 ab if( if (
 ab while( while (
