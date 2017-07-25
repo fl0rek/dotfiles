@@ -5,7 +5,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " window zoom in/out
-Plug 'ZoomWin'
+Plug 'vim-scripts/ZoomWin'
 
 " change splash screen
 Plug 'mhinz/vim-startify'
