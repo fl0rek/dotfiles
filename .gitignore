@@ -2,6 +2,7 @@
 /ssh/.ssh/private/*
 /ssh/.ssh/public/*
 /ssh/.ssh/known_hosts
+/ssh/.ssh/authorized_keys
 /ssh/.ssh/environment-*
 
 *.swp
