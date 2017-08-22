@@ -19,3 +19,6 @@
 [submodule "zsh/.zsh-plugins/zsh-completions"]
 	path = zsh/.zsh-plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/.zsh-plugins/borgbackup-zsh-completion"]
+	path = zsh/.zsh-plugins/borgbackup-zsh-completion
+	url = https://github.com/mrkmg/borgbackup-zsh-completion.git

@@ -46,8 +46,12 @@ bindkey '^[[A' history-beginning-search-backward-end
 bindkey '^[[B' history-beginning-search-forward-end
 
 ZSH_COMPLETIONS="$HOME/.zsh-plugins/zsh-completions"
+ZSH_BORG_COMPLETION="$HOME/.zsh-plugins/borgbackup-zsh-completion"
+
+
 [[ -e "$ZSH_COMPLETIONS" ]] && fpath=("$ZSH_COMPLETIONS" $fpath)
-unset ZSH_COMPLETIONS
+[[ -e "$ZSH_BORG_COMPLETION" ]] && fpath=("$ZSH_BORG_COMPLETION" $fpath)
+unset ZSH_COMPLETIONS ZSH_BORG_COMPLETION
 
 # added by travis gem
 [ -f /home/florek/.travis/travis.sh ] && source /home/florek/.travis/travis.sh
