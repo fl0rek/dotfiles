@@ -127,6 +127,7 @@ hi Folded ctermbg=Black ctermfg=darkyellow
 
 " Startify config
 let g:startify_custom_header = []
+let g:startify_change_to_dir = 0
 let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' }, { 'ca' : '~/.aliases' } ]
 
 
@@ -223,6 +224,12 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" Increment variable, can be used in replacements
+function! Inc(x)
+    let a:x[0] += 1
+    return a:x[0]
+endfunction
 
 nnoremap gp :bp<CR>
 nnoremap gn :bn<CR>
