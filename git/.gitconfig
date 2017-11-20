@@ -16,6 +16,7 @@
 	br = branch
 	ct = commit
 	st = status
+	bn = !"git branch-name"
 
 	purr = pull --rebase
 	puff = pull --ff-only
