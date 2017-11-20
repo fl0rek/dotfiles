@@ -111,8 +111,7 @@ set gcr=n:blinkon0
 set mouse=a
 
 " Folding specific configuration
-set foldmethod=syntax
-set foldlevelstart=9999
+set foldmethod=manual
 
 let javaScript_fold=1		" JavaScript
 let perl_fold=1			" Perl
