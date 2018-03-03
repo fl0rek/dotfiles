@@ -58,6 +58,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 call plug#end()
 
 " CONFIG
@@ -86,6 +88,11 @@ filetype plugin indent on
 filetype plugin on
 
 syntax on
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highligh = 1
+let g:cpp_experimental_template_highlight = 1
 
 " show current number and relative offset for rest
 set number
