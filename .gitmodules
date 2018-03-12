@@ -22,3 +22,6 @@
 [submodule "zsh/.zsh-plugins/borgbackup-zsh-completion"]
 	path = zsh/.zsh-plugins/borgbackup-zsh-completion
 	url = https://github.com/mrkmg/borgbackup-zsh-completion.git
+[submodule "mutt-colors-solarized"]
+	path = mutt/.mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized.git
