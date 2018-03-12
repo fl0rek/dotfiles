@@ -58,6 +58,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 call plug#end()
 
 " CONFIG
@@ -87,6 +90,11 @@ filetype plugin on
 
 syntax on
 
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highligh = 1
+let g:cpp_experimental_template_highlight = 1
+
 " show current number and relative offset for rest
 set number
 set relativenumber
@@ -111,8 +119,7 @@ set gcr=n:blinkon0
 set mouse=a
 
 " Folding specific configuration
-set foldmethod=syntax
-set foldlevelstart=9999
+set foldmethod=manual
 
 let javaScript_fold=1		" JavaScript
 let perl_fold=1			" Perl
@@ -128,6 +135,7 @@ hi Folded ctermbg=Black ctermfg=darkyellow
 
 " Startify config
 let g:startify_custom_header = []
+let g:startify_change_to_dir = 0
 let g:startify_bookmarks = [ { 'cv' : '~/.vimrc' }, { 'cz' : '~/.zshrc' }, { 'ca' : '~/.aliases' } ]
 
 
@@ -227,6 +235,12 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" Increment variable, can be used in replacements
+function! Inc(x)
+    let a:x[0] += 1
+    return a:x[0]
+endfunction
 
 nnoremap gp :bp<CR>
 nnoremap gn :bn<CR>

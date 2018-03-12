@@ -74,7 +74,7 @@ done
 
 function sayy() { echo "$@" | espeak -p10 -s150 -v mb/mb-en1 2>/dev/null; }
 
-
+ppid () { ps -p ${1:-$$} -o ppid=; }
 
 ## LOAD ALIAS MODULES #############################
 [[ -d ~/.aliases.d/ ]] && for i in ~/.aliases.d/* ; do
