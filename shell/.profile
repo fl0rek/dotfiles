@@ -36,3 +36,4 @@ PATH=$PATH:/usr/sbin
 
 export PATH;
 
+. "$HOME/.cargo/env"
