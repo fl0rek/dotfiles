@@ -61,6 +61,9 @@ Plug 'vim-airline/vim-airline-themes'
 " syntax highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" vim-lsp langauge server
+Plug 'prabirshrestha/vim-lsp'
+
 call plug#end()
 
 " CONFIG
@@ -71,7 +74,6 @@ xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 nnoremap <silent> <C-P> :Files<CR>
-
 
 let g:minimap_toggle='<leader>mm'
 
@@ -261,5 +263,14 @@ set cryptmethod=blowfish2
 ab iff if and only if
 ab if( if (
 ab while( while (
+
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+	\   'name': 'Rust Language Server',
+	\   'cmd': {server_info->['rust-analyzer']},
+	\   'whitelist': ['rust'],
+	\ })
+endif
+
 
 " vim: set ts=8 sw=2 tw=78 noet :

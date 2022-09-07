@@ -13,7 +13,7 @@ autoload -U zmv
 plugins=( colored-man-pages cp gas git gitignore gnu-utils man mosh nmap perl python rsync rsync ssh-agent ssh-agent sudo systemd tmux virtualenv )
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.alias-tips/alias-tips.plugin.zsh
+#source $HOME/.alias-tips/alias-tips.plugin.zsh
 
 unsetopt sharehistory
 
